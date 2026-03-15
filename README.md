@@ -1,2 +1,271 @@
-# Capstone-Project-Adv-ML2
-This is the Github Repo to Complete the Capstone project for Adv ML Course
+AI-Generated Universal Synthetic Image Detection
+
+A research project focused on detecting AI-generated synthetic images using deep learning and explainable AI techniques. This project implements a baseline detector using VGG16, evaluates it on the CiFake dataset, and explores artifact explainability using Grad-CAM and LLM-based interpretation.
+
+Project Overview
+
+Recent advances in Generative AI, such as GANs and diffusion models, allow the creation of highly realistic synthetic images. While these technologies have many positive applications, they also introduce risks, including:
+
+misinformation
+
+identity manipulation
+
+deepfake media
+
+digital fraud
+
+Traditional fake image detectors often fail to generalize across different generative models and provide little interpretability.
+
+This project aims to develop a universal synthetic image detection framework capable of:
+
+detecting AI-generated images across multiple generative models
+
+identifying visual artifacts introduced by generative networks
+
+providing interpretable explanations for model predictions
+
+Current Milestone Implementation
+
+The current milestone implements a complete baseline detection pipeline.
+
+Pipeline workflow:
+
+Dataset Preparation
+        ↓
+Image Preprocessing
+        ↓
+VGG16 CNN Training
+        ↓
+Model Evaluation
+        ↓
+Confusion Matrix Analysis
+        ↓
+Grad-CAM Visualization
+        ↓
+LLM Artifact Explanation
+
+This baseline establishes the experimental infrastructure for developing the final universal detection architecture.
+
+Dataset
+
+The project uses the CiFake Dataset, which contains both real images and AI-generated synthetic images.
+
+Dataset structure used in the project:
+
+dataset/
+    train/
+        real/
+        fake/
+    validation/
+        real/
+        fake/
+    test/
+        real/
+        fake/
+
+Images are resized to:
+
+224 × 224
+
+to match the input requirements of the VGG16 architecture.
+
+Model Architecture
+
+The baseline detector uses Transfer Learning with VGG16.
+
+Architecture:
+
+Input Image (224x224x3)
+        ↓
+Pretrained VGG16 Convolution Layers
+        ↓
+Global Pooling
+        ↓
+Fully Connected Layers
+        ↓
+Sigmoid Output Layer
+        ↓
+Binary Classification
+        (Real vs Fake)
+Training Configuration
+Parameter	Value
+Model	VGG16 (Pretrained ImageNet)
+Image Size	224 × 224
+Optimizer	Adam
+Loss Function	Binary Cross-Entropy
+Task	Real vs Fake Classification
+Model Evaluation
+
+Model performance is evaluated using:
+
+Classification accuracy
+
+Confusion matrix
+
+prediction confidence
+
+The confusion matrix helps identify:
+
+True Positives – correctly detected fake images
+
+True Negatives – correctly detected real images
+
+False Positives – real images incorrectly labeled as fake
+
+False Negatives – synthetic images classified as real
+
+These results provide insight into model reliability and failure cases.
+
+Explainability with Grad-CAM
+
+Deep neural networks often behave as black-box models. To interpret predictions, the project integrates Grad-CAM (Gradient-weighted Class Activation Mapping).
+
+Grad-CAM highlights the image regions most responsible for a prediction.
+
+Example insights:
+
+irregular textures
+
+unnatural edges
+
+high-frequency artifact regions
+
+inconsistent patterns
+
+These visual explanations help identify synthetic artifacts introduced by generative models.
+
+Artifact Interpretation Using LLM
+
+To further improve interpretability, the project integrates a Large Language Model (LLM).
+
+The LLM analyzes:
+
+model prediction confidence
+
+Grad-CAM heatmaps
+
+artifact regions
+
+and produces human-readable explanations describing why the image is likely synthetic.
+
+Example explanation:
+
+“The classifier detected irregular high-frequency textures and unnatural structural patterns consistent with artifacts produced by generative models.”
+
+Example Results
+Confusion Matrix
+
+Model classification results are analyzed using a confusion matrix to understand prediction accuracy and error types.
+
+Grad-CAM Visualization
+
+Grad-CAM heatmaps highlight suspicious regions where the model detects synthetic artifacts.
+
+These visualizations provide interpretability for forensic analysis.
+
+Project Structure
+AI-Universal-Synthetic-Image-Detection
+
+│
+├── notebooks
+│   └── Capstone_project_milstone.ipynb
+│
+├── dataset
+│   ├── train
+│   ├── validation
+│   └── test
+│
+├── models
+│   └── trained_model.h5
+│
+├── results
+│   ├── confusion_matrix.png
+│   ├── gradcam_examples
+│   └── evaluation_outputs
+│
+├── report
+│   └── milestone_report.pdf
+│
+└── README.md
+How to Run the Project
+1 Install Dependencies
+pip install tensorflow
+pip install numpy
+pip install matplotlib
+pip install scikit-learn
+pip install opencv-python
+pip install split-folders
+2 Clone Repository
+git clone https://github.com/yourusername/AI-Synthetic-Image-Detection
+cd AI-Synthetic-Image-Detection
+3 Run Notebook
+jupyter notebook
+
+Open:
+
+Capstone_project_milstone.ipynb
+
+and run the cells sequentially.
+
+Future Work
+
+The final phase of this project will implement a Hybrid Multi-Domain Detection Architecture.
+
+Planned improvements:
+
+Frequency Domain Artifact Detection
+
+Using:
+
+Fast Fourier Transform (FFT)
+
+Discrete Cosine Transform (DCT)
+
+to detect spectral inconsistencies.
+
+Hybrid Spatial–Frequency Model
+
+Dual-branch architecture:
+
+Spatial CNN Branch
+        +
+Frequency CNN Branch
+        ↓
+Feature Fusion
+        ↓
+Universal Fake Image Detector
+Cross-Generator Generalization
+
+Testing robustness across:
+
+GAN models
+
+Diffusion models
+
+autoregressive generators
+
+Robustness Testing
+
+Evaluate performance under:
+
+JPEG compression
+
+Gaussian noise
+
+image resizing
+
+adversarial perturbations
+
+Research Motivation
+
+This project contributes to the field of AI forensics and trustworthy AI by developing detection systems that are:
+
+model-agnostic
+
+interpretable
+
+robust to unseen generative models
+
+Author
+
+Tanvir Mahmud Prince
