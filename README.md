@@ -4,7 +4,7 @@ A research project focused on detecting AI-generated synthetic images using deep
 
 Project Overview
 
-Recent advances in Generative AI, such as GANs and diffusion models, allow the creation of highly realistic synthetic images. While these technologies have many positive applications, they also introduce risks, including:
+Recent advances in Generative AI such as GANs and diffusion models allow the creation of highly realistic synthetic images. While these technologies have many positive applications, they also introduce risks including:
 
 misinformation
 
@@ -92,7 +92,7 @@ Parameter	Value
 Model	VGG16 (Pretrained ImageNet)
 Image Size	224 × 224
 Optimizer	Adam
-Loss Function	Binary Cross-Entropy
+Loss Function	Binary Cross Entropy
 Task	Real vs Fake Classification
 Model Evaluation
 
@@ -102,7 +102,7 @@ Classification accuracy
 
 Confusion matrix
 
-prediction confidence
+Prediction confidence
 
 The confusion matrix helps identify:
 
@@ -152,20 +152,8 @@ Example explanation:
 
 “The classifier detected irregular high-frequency textures and unnatural structural patterns consistent with artifacts produced by generative models.”
 
-Example Results
-Confusion Matrix
-
-Model classification results are analyzed using a confusion matrix to understand prediction accuracy and error types.
-
-Grad-CAM Visualization
-
-Grad-CAM heatmaps highlight suspicious regions where the model detects synthetic artifacts.
-
-These visualizations provide interpretability for forensic analysis.
-
 Project Structure
 AI-Universal-Synthetic-Image-Detection
-
 │
 ├── notebooks
 │   └── Capstone_project_milstone.ipynb
@@ -188,17 +176,17 @@ AI-Universal-Synthetic-Image-Detection
 │
 └── README.md
 How to Run the Project
-1 Install Dependencies
+1. Install Dependencies
 pip install tensorflow
 pip install numpy
 pip install matplotlib
 pip install scikit-learn
 pip install opencv-python
 pip install split-folders
-2 Clone Repository
+2. Clone Repository
 git clone https://github.com/yourusername/AI-Synthetic-Image-Detection
 cd AI-Synthetic-Image-Detection
-3 Run Notebook
+3. Run Notebook
 jupyter notebook
 
 Open:
@@ -240,7 +228,7 @@ Testing robustness across:
 
 GAN models
 
-Diffusion models
+diffusion models
 
 autoregressive generators
 
@@ -256,16 +244,26 @@ image resizing
 
 adversarial perturbations
 
-Research Motivation
-
-This project contributes to the field of AI forensics and trustworthy AI by developing detection systems that are:
-
-model-agnostic
-
-interpretable
-
-robust to unseen generative models
-
 Author
 
 Tanvir Mahmud Prince
+
+MSc Electrical Engineering
+
+Research interests:
+
+Artificial Intelligence
+
+Computer Vision
+
+Synthetic Media Detection
+
+AI for Digital Forensics
+
+References
+
+Ojha et al., Towards Universal Fake Image Detectors that Generalize Across Generative Models, CVPR 2023.
+
+Zhang et al., Perceptual Artifacts Localization for Image Synthesis Tasks, ICCV 2023.
+
+Jia et al., Can ChatGPT Detect Deepfakes?, CVPR 2024.
