@@ -1,35 +1,36 @@
-AI-Generated Universal Synthetic Image Detection
 
-A research project focused on detecting AI-generated synthetic images using deep learning and explainable AI techniques. This project implements a baseline detector using VGG16, evaluates it on the CiFake dataset, and explores artifact explainability using Grad-CAM and LLM-based interpretation.
+# AI Generated Universal Synthetic Image Detection
 
-Project Overview
+A research project focused on detecting **AI-generated synthetic images** using deep learning and explainable AI techniques. This project implements a baseline detector using **VGG16**, evaluates it on the **CiFake dataset**, and explores **artifact explainability using Grad-CAM and LLM-based interpretation**.
 
-Recent advances in Generative AI such as GANs and diffusion models allow the creation of highly realistic synthetic images. While these technologies have many positive applications, they also introduce risks including:
+---
 
-misinformation
+# Project Overview
 
-identity manipulation
+Recent advances in **Generative AI** such as GANs and diffusion models allow the creation of highly realistic synthetic images. While these technologies have many positive applications, they also introduce risks including:
 
-deepfake media
+- misinformation
+- identity manipulation
+- deepfake media
+- digital fraud
 
-digital fraud
+Traditional fake image detectors often fail to **generalize across different generative models** and provide **little interpretability**.
 
-Traditional fake image detectors often fail to generalize across different generative models and provide little interpretability.
+This project aims to develop a **universal synthetic image detection framework** capable of:
 
-This project aims to develop a universal synthetic image detection framework capable of:
+- detecting AI-generated images across multiple generative models
+- identifying **visual artifacts** introduced by generative networks
+- providing **interpretable explanations** for model predictions
 
-detecting AI-generated images across multiple generative models
+---
 
-identifying visual artifacts introduced by generative networks
+# Current Milestone Implementation
 
-providing interpretable explanations for model predictions
-
-Current Milestone Implementation
-
-The current milestone implements a complete baseline detection pipeline.
+The current milestone implements a **complete baseline detection pipeline**.
 
 Pipeline workflow:
 
+```
 Dataset Preparation
         ↓
 Image Preprocessing
@@ -43,15 +44,19 @@ Confusion Matrix Analysis
 Grad-CAM Visualization
         ↓
 LLM Artifact Explanation
+```
 
-This baseline establishes the experimental infrastructure for developing the final universal detection architecture.
+This baseline establishes the **experimental infrastructure** for developing the final universal detection architecture.
 
-Dataset
+---
 
-The project uses the CiFake Dataset, which contains both real images and AI-generated synthetic images.
+# Dataset
+
+The project uses the **CiFake Dataset**, which contains both **real images** and **AI-generated synthetic images**.
 
 Dataset structure used in the project:
 
+```
 dataset/
     train/
         real/
@@ -62,19 +67,25 @@ dataset/
     test/
         real/
         fake/
+```
 
 Images are resized to:
 
+```
 224 × 224
+```
 
 to match the input requirements of the VGG16 architecture.
 
-Model Architecture
+---
 
-The baseline detector uses Transfer Learning with VGG16.
+# Model Architecture
+
+The baseline detector uses **Transfer Learning with VGG16**.
 
 Architecture:
 
+```
 Input Image (224x224x3)
         ↓
 Pretrained VGG16 Convolution Layers
@@ -87,72 +98,77 @@ Sigmoid Output Layer
         ↓
 Binary Classification
         (Real vs Fake)
-Training Configuration
-Parameter	Value
-Model	VGG16 (Pretrained ImageNet)
-Image Size	224 × 224
-Optimizer	Adam
-Loss Function	Binary Cross Entropy
-Task	Real vs Fake Classification
-Model Evaluation
+```
+
+### Training Configuration
+
+| Parameter | Value |
+|----------|------|
+| Model | VGG16 (Pretrained ImageNet) |
+| Image Size | 224 × 224 |
+| Optimizer | Adam |
+| Loss Function | Binary Cross Entropy |
+| Task | Real vs Fake Classification |
+
+---
+
+# Model Evaluation
 
 Model performance is evaluated using:
 
-Classification accuracy
-
-Confusion matrix
-
-Prediction confidence
+- Classification accuracy
+- Confusion matrix
+- Prediction confidence
 
 The confusion matrix helps identify:
 
-True Positives – correctly detected fake images
+- **True Positives** – correctly detected fake images
+- **True Negatives** – correctly detected real images
+- **False Positives** – real images incorrectly labeled as fake
+- **False Negatives** – synthetic images classified as real
 
-True Negatives – correctly detected real images
+These results provide insight into **model reliability and failure cases**.
 
-False Positives – real images incorrectly labeled as fake
+---
 
-False Negatives – synthetic images classified as real
+# Explainability with Grad-CAM
 
-These results provide insight into model reliability and failure cases.
+Deep neural networks often behave as **black-box models**. To interpret predictions, the project integrates **Grad-CAM (Gradient-weighted Class Activation Mapping)**.
 
-Explainability with Grad-CAM
-
-Deep neural networks often behave as black-box models. To interpret predictions, the project integrates Grad-CAM (Gradient-weighted Class Activation Mapping).
-
-Grad-CAM highlights the image regions most responsible for a prediction.
+Grad-CAM highlights the **image regions most responsible for a prediction**.
 
 Example insights:
 
-irregular textures
+- irregular textures
+- unnatural edges
+- high-frequency artifact regions
+- inconsistent patterns
 
-unnatural edges
+These visual explanations help identify **synthetic artifacts introduced by generative models**.
 
-high-frequency artifact regions
+---
 
-inconsistent patterns
+# Artifact Interpretation Using LLM
 
-These visual explanations help identify synthetic artifacts introduced by generative models.
-
-Artifact Interpretation Using LLM
-
-To further improve interpretability, the project integrates a Large Language Model (LLM).
+To further improve interpretability, the project integrates a **Large Language Model (LLM)**.
 
 The LLM analyzes:
 
-model prediction confidence
+- model prediction confidence
+- Grad-CAM heatmaps
+- artifact regions
 
-Grad-CAM heatmaps
-
-artifact regions
-
-and produces human-readable explanations describing why the image is likely synthetic.
+and produces **human-readable explanations** describing why the image is likely synthetic.
 
 Example explanation:
 
-“The classifier detected irregular high-frequency textures and unnatural structural patterns consistent with artifacts produced by generative models.”
+> “The classifier detected irregular high-frequency textures and unnatural structural patterns consistent with artifacts produced by generative models.”
 
-Project Structure
+---
+
+# Project Structure
+
+```
 AI-Universal-Synthetic-Image-Detection
 │
 ├── notebooks
@@ -175,46 +191,68 @@ AI-Universal-Synthetic-Image-Detection
 │   └── milestone_report.pdf
 │
 └── README.md
-How to Run the Project
-1. Install Dependencies
+```
+
+---
+
+# How to Run the Project
+
+### 1. Install Dependencies
+
+```
 pip install tensorflow
 pip install numpy
 pip install matplotlib
 pip install scikit-learn
 pip install opencv-python
 pip install split-folders
-2. Clone Repository
+```
+
+---
+
+### 2. Clone Repository
+
+```
 git clone https://github.com/yourusername/AI-Synthetic-Image-Detection
 cd AI-Synthetic-Image-Detection
-3. Run Notebook
+```
+
+---
+
+### 3. Run Notebook
+
+```
 jupyter notebook
+```
 
 Open:
 
+```
 Capstone_project_milstone.ipynb
+```
 
 and run the cells sequentially.
 
-Future Work
+---
 
-The final phase of this project will implement a Hybrid Multi-Domain Detection Architecture.
+# Future Work
+
+The final phase of this project will implement a **Hybrid Multi-Domain Detection Architecture**.
 
 Planned improvements:
 
-Frequency Domain Artifact Detection
+### Frequency Domain Artifact Detection
 
 Using:
 
-Fast Fourier Transform (FFT)
-
-Discrete Cosine Transform (DCT)
+- Fast Fourier Transform (FFT)
+- Discrete Cosine Transform (DCT)
 
 to detect spectral inconsistencies.
 
-Hybrid Spatial–Frequency Model
+### Hybrid Spatial–Frequency Model
 
-Dual-branch architecture:
-
+```
 Spatial CNN Branch
         +
 Frequency CNN Branch
@@ -222,48 +260,44 @@ Frequency CNN Branch
 Feature Fusion
         ↓
 Universal Fake Image Detector
-Cross-Generator Generalization
+```
+
+### Cross-Generator Generalization
 
 Testing robustness across:
 
-GAN models
+- GAN models
+- diffusion models
+- autoregressive generators
 
-diffusion models
-
-autoregressive generators
-
-Robustness Testing
+### Robustness Testing
 
 Evaluate performance under:
 
-JPEG compression
+- JPEG compression
+- Gaussian noise
+- image resizing
+- adversarial perturbations
 
-Gaussian noise
+---
 
-image resizing
+# Author
 
-adversarial perturbations
-
-Author
-
-Tanvir Mahmud Prince
+**Tanvir Mahmud Prince**
 
 MSc Electrical Engineering
 
 Research interests:
 
-Artificial Intelligence
+- Artificial Intelligence
+- Computer Vision
+- Synthetic Media Detection
+- AI for Digital Forensics
 
-Computer Vision
+---
 
-Synthetic Media Detection
+# References
 
-AI for Digital Forensics
-
-References
-
-Ojha et al., Towards Universal Fake Image Detectors that Generalize Across Generative Models, CVPR 2023.
-
-Zhang et al., Perceptual Artifacts Localization for Image Synthesis Tasks, ICCV 2023.
-
-Jia et al., Can ChatGPT Detect Deepfakes?, CVPR 2024.
+1. Ojha et al., *Towards Universal Fake Image Detectors that Generalize Across Generative Models*, CVPR 2023.
+2. Zhang et al., *Perceptual Artifacts Localization for Image Synthesis Tasks*, ICCV 2023.
+3. Jia et al., *Can ChatGPT Detect Deepfakes?*, CVPR 2024.
