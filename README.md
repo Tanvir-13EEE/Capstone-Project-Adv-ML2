@@ -16,11 +16,14 @@ Recent advances in **Generative AI** such as GANs and diffusion models allow the
 
 Traditional fake image detectors often fail to **generalize across different generative models** and provide **little interpretability**.
 
-This project aims to develop a **universal synthetic image detection framework** capable of:
+This project aims to develop a **universal synthetic image detection framework**. We Made the following contributions:
 
-- detecting AI-generated images across multiple generative models
-- identifying **visual artifacts** introduced by generative networks
-- providing **interpretable explanations** for model predictions
+- A rigorous mathematical taxonomy of generator-specific artifact signatures spanning spatial, frequency (FFT/DCT/DWT), statistical, and sensor-physics domains.
+- Developed a novel transformer architechture called Multi-Stream Spectral Transformer (MSST), the first architecture to unify all five signal domains under a single gated-attention backbone with swappable task heads.
+- We introduce Masked Spectral Modeling (MSM) as a self-supervised pre-training objective that teaches the backbone the physics of digital image frequencies without task-specific bias.
+- We derive formal proofs for the principal artifact signatures exploited by each detection stream and relate them to their generative-process causes.
+- We present comparative analysis demonstrating the superiority of multi-domain approaches over single-domain baselines and document robustness under six real-world image degradation conditions.
+- Finally, we integrate interpretable explanations by artifact localization.
 
 ---
 
