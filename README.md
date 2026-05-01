@@ -68,22 +68,6 @@ deepfake-detection/
 MIT License — see [LICENSE](LICENSE) for details.
 Finally, copy your existing trained files into the structure:
 python# ============================================================
-# Copy existing trained artifacts into the new structure
-# ============================================================
-
----
-
-### Training Configuration
-
-| Parameter | Value |
-|----------|------|
-| Model | VGG16 (Pretrained ImageNet) |
-| Image Size | 224 × 224 |
-| Optimizer | Adam |
-| Loss Function | Binary Cross Entropy |
-| Task | Real vs Fake Classification |
-
----
 
 # Model Evaluation
 
@@ -191,15 +175,17 @@ Using:
 
 - Fast Fourier Transform (FFT)
 - Discrete Cosine Transform (DCT)
+- Discrete Wavelet Transform (DWT)
+- Expert Physics Extractor (SNR, PSD, PRNU, Kurtosis distribution etc.)
 
 to detect spectral inconsistencies.
 
 ### Hybrid Spatial–Frequency Model
 
 ```
-Spatial CNN Branch
+Spatial Branch
         +
-Frequency CNN Branch
+Spectral Branche
         ↓
 Feature Fusion
         ↓
